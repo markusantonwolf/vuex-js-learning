@@ -24,7 +24,8 @@ export default {
   },
   methods: {
     changeData() {
-      this.$store.state.products[0].name = 'Changed'
+      this.$store.commit('reducePrice', {number: 10})
+      // this.$store.state.products[0].name = 'Changed'
     }
   }
 }

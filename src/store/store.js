@@ -11,5 +11,12 @@ export const store = new Vuex.Store({
       {name: 'Green Shells', price: 60},
       {name: 'Red Shells', price: 80}
     ]
-}
+  },
+  mutations: {
+    reducePrice: (state, payload) => {
+      state.products.forEach( product => {
+        product.price = product.price / payload.number
+      })
+    }
+  }
 })
