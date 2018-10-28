@@ -18,5 +18,10 @@ export const store = new Vuex.Store({
         product.price = product.price / payload.number
       })
     }
+  },
+  actions: {
+    reducePrice: (context, payload) => {
+      context.commit('reducePrice', payload)
+    }
   }
 })
