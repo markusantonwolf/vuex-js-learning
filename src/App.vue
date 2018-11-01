@@ -2,6 +2,7 @@
   <div id="app">
     <product-list-one></product-list-one>
     <product-list-two></product-list-two>
+    <p>Token: {{token}}</p>
   </div>
 </template>
 
@@ -18,7 +19,12 @@ export default {
   },
   data () {
     return {
-      
+
+    }
+  },
+  computed: {
+    token() {
+      return this.$store.state.token
     }
   }
 }

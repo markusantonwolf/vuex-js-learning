@@ -6,6 +6,9 @@
         {{product.name}} - Price: {{product.price}}
       </li>
     </ul>
+    <button v-on:click="setCookie" type="button" name="button">SetCookie</button>
+    <button v-on:click="getCookie" type="button" name="button">GetCookie</button>
+    <button v-on:click="delCookie" type="button" name="button">DeleteCookie</button>
   </div>
 </template>
 
@@ -19,6 +22,29 @@ export default {
   computed: {
     products() {
       return this.$store.state.products
+    }
+  },
+  methods: {
+    setCookie() {
+      // const today = new Date
+      // this.$cookies.config('30d')
+      let result =this.$cookies.set("token","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX", '30d')
+      if (this.$cookies.isKey("token")) {
+        console.info(true)
+      }
+    },
+    getCookie() {
+      if (this.$cookies.isKey("token")) {
+        this.$store.state.token = this.$cookies.get("token")
+      } else {
+        console.info('COOKIE NOT AVAILIABLE')
+      }
+    },
+    delCookie() {
+      this.$cookies.remove("token");
+      if (!this.$cookies.isKey("token")) {
+        console.info(true)
+      }
     }
   }
 }

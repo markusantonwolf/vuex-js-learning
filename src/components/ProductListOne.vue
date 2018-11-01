@@ -2,15 +2,19 @@
   <div id="product-list-two">
     <h2>product-list-two</h2>
     <ul>
-      <li v-for="product in products">
+      <li v-for="product in saleProducts">
         {{product.name}} - Price: {{product.price}}
       </li>
     </ul>
-    <button v-on:click="changeData" type="button" name="button">Change</button>
+    <button v-on:click="reducePrice" type="button" name="button">Change</button>
   </div>
 </template>
 
 <script>
+
+import {mapActions} from 'vuex';
+import {mapGetters} from 'vuex';
+
 export default {
   data () {
     return {
@@ -20,13 +24,16 @@ export default {
   computed: {
     products(){
         return this.$store.state.products;
-    }
+    },
+    ...mapGetters([
+      'saleProducts'
+    ])
   },
   methods: {
-    changeData() {
-      this.$store.dispatch('reducePrice', {number: 10})
-      // this.$store.commit('reducePrice', {number: 10})
-      // this.$store.state.products[0].name = 'Changed'
+    reducePrice() {
+      this.$store.dispatch('reducePrice', {number: 0.5})
+    //   // this.$store.commit('reducePrice', {number: 10})
+    //   // this.$store.state.products[0].name = 'Changed'
     }
   }
 }
