@@ -29,11 +29,17 @@ export const store = new Vuex.Store({
       state.products.forEach( product => {
         product.price = product.price / payload.number
       })
+    },
+    setToken: (state, payload) => {
+      state.token = payload
     }
   },
   actions: {
     reducePrice: (context, payload) => {
       context.commit('reducePrice', payload)
+    },
+    setToken: (context, payload) => {
+      context.commit('setToken', payload)
     }
   }
 })
